@@ -5,6 +5,8 @@
     = submit_tag "Import"
 = column_chart charts_pass_fail_path, stacked: true, height: "400px", ytitle: "Number of builds"
 %h3 Pass vs Fail
+= area_chart charts_duration_time_path, legend: false, discrete: true, ytitle: "Duration of builds", max: 7000
+%h3 Duration per day
 %table#sessions
   %tr
     %th Date of build

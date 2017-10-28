@@ -5,6 +5,7 @@ Rails.application.routes.draw do
 
   namespace :charts do
     get "pass_fail"
+    get "duration_time"
   end
   root "sessions#index"
 end
