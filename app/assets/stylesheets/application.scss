@@ -14,10 +14,47 @@
 
  @import "bootstrap";
 
+ body {
+   background-color: #383F45;
+ }
+
  .container {
    background-color: White;
  }
 
- body {
-   background-color: #383F45;
+ h1, .pagination, .import {
+   padding-left: 30%;
+   padding-right: 30%;
+ }
+
+ h1 {
+   text-transform: uppercase;
+   color: Orange;
+ }
+
+ .pagination {
+   margin-top: 10px;
+   font-size: 25px;
+ }
+
+ #sessions {
+     font-family: "Trebuchet MS", Arial, Helvetica, sans-serif;
+     border-collapse: collapse;
+     position: center;
+     width: 100%;
+ }
+
+ #sessions td, #sessions th {
+     border: 1px solid #ddd;
+     padding: 8px;
+ }
+
+ #sessions tr:nth-child(even){background-color: #f2f2f2;}
+
+ #sessions th {
+     padding-top: 12px;
+     padding-bottom: 12px;
+     text-align: left;
+     background-color: Orange;
+     color: white;
  }
