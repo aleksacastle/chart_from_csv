@@ -1,0 +1,15 @@
+%h1 Sessions history
+.import
+  = form_tag import_sessions_path, multipart: true do
+    = file_field_tag :file
+    = submit_tag "Import"
+%table#sessions
+  %tr
+    %th Date of build
+    %th Status
+    %th Duration
+  - @sessions.each do |s|
+    %tr
+      %td= s.created_at.strftime("%B %e, %Y")
+      %td= s.summary_status
+      %td= s.duration

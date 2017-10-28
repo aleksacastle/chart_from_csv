@@ -1,7 +1,7 @@
-class SessioncController < ApplicationController
+class SessionsController < ApplicationController
   def index
     @sessions = Session.order(:created_at)
-    respond_to do |format| 
+    respond_to do |format|
       format.html
       format.csv
     end

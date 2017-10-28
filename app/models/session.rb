@@ -1,7 +1,7 @@
 class Session < ApplicationRecord
 
   def self.import(file)
-    CSV.foreeach(file.path, header: true) do |row|
+    CSV.foreach(file.path, headers: true) do |row|
       Session.create! row.to_hash
     end
   end
