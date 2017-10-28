@@ -3,6 +3,8 @@
   = form_tag import_sessions_path, multipart: true do
     = file_field_tag :file
     = submit_tag "Import"
+= column_chart charts_pass_fail_path, stacked: true, height: "400px", ytitle: "Number of builds"
+%h3 Pass vs Fail
 %table#sessions
   %tr
     %th Date of build

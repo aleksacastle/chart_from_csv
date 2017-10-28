@@ -32,6 +32,16 @@
    color: Orange;
  }
 
+ h3 {
+   text-align: center;
+ }
+
+ div#chart-2, div#chart-1 {
+   padding-bottom: 40px;
+   padding-top: 40px;
+   padding: 25px;
+ }
+
  .pagination {
    margin-top: 10px;
    font-size: 25px;
