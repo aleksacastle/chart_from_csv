@@ -1,6 +1,6 @@
 class SessionsController < ApplicationController
   def index
-    @sessions = Session.order(:created_at)
+    @sessions = Session.paginate(:page => params[:page], :per_page => 15)
     respond_to do |format|
       format.html
       format.csv

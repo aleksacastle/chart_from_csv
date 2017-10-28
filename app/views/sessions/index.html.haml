@@ -13,3 +13,6 @@
       %td= s.created_at.strftime("%B %e, %Y")
       %td= s.summary_status
       %td= s.duration
+%nav{"aria-label" => "Page navigation"}
+  %ul.pager
+    = will_paginate @sessions
