@@ -7,5 +7,7 @@
     = stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload'
     = javascript_include_tag 'application', 'data-turbolinks-track': 'reload'
   %body
+    %button.btn.btn-warning{:type => "button"}
+      %a{:href => "https://github.com/aleksacastle/chart_from_csv"} Return ro github
     .container
       = yield
