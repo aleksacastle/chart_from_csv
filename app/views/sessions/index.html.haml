@@ -5,9 +5,6 @@
     = submit_tag "Import"
 = column_chart charts_pass_fail_path, stacked: true, height: "400px", ytitle: "Number of builds"
 %h3 Pass vs Fail
-= line_chart Session.group(:summary_status).group_by_day(:created_at, format: "%e %b").count, discrete: true, ytitle: "Number of builds"
-%h3 Abnormal failed builds
-%h5 (where number of passed builds less than number of failed builds)
 = area_chart charts_duration_time_path, legend: false, discrete: true, ytitle: "Duration of builds", max: 7000
 %h3 Duration per day
 %table#sessions
