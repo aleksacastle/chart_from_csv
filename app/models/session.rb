@@ -8,14 +8,14 @@ class Session < ApplicationRecord
   end
 
   def self.failed_percent
-    #builds groupped by day and by summary_status
+    # builds groupped by day and by summary_status
     total_hash = Session.group(:summary_status).group_by_day(:created_at).count
 
-    #initiate empty array for passed and failed builds
+    # initiate empty array for passed and failed builds
     passed_array =[]
     failed_array =[]
 
-    #passed and failed builds per day
+    # passed and failed builds per day
     total_hash.each do |key, value|
       if key.include?("passed")
         passed_array << value
@@ -25,9 +25,9 @@ class Session < ApplicationRecord
       end
     end
 
-    #initiate empty array for percent of failed builds percentage
+    # initiate empty array for percent of failed builds percentage
     percent=[]
-    #calculate percent of failed in total failed and passed builds
+    # calculate percent of failed in total failed and passed builds
     passed_array.each_index do |i|
       if passed_array[i]+failed_array[i]==0
         percent[i]=0
@@ -36,15 +36,17 @@ class Session < ApplicationRecord
       end
     end
 
-    #array of all dates
+    # array of all dates
     total_hash_dates=Session.group_by_day(:created_at).count
     dates_array = total_hash_dates.keys
 
-    #percent of failed builds per day with date
+    # percent of failed builds per day with date
     percent_hash = Hash[dates_array.zip(percent)]
   end
 
   def self.anomaly
+    # Grubbs' test for outliers
+    # https://en.wikipedia.org/wiki/Grubbs'_test_for_outliers
     Session.failed_percent
   end
 end
