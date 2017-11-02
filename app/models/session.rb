@@ -47,6 +47,8 @@ class Session < ApplicationRecord
   def self.anomaly
     # Grubbs' test for outliers
     # https://en.wikipedia.org/wiki/Grubbs'_test_for_outliers
-    Session.failed_percent
+    arr = Session.failed_percent.values
+    arr.extend Basic::Stats
+    arr.select_outliers
   end
 end
