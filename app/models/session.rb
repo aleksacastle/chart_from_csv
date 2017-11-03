@@ -49,8 +49,8 @@ class Session < ApplicationRecord
     # https://en.wikipedia.org/wiki/Grubbs'_test_for_outliers
     arr = Session.failed_percent.values
     arr.extend Basic::Stats
-    arr.select_outliers
-    
+    anomaly_values = arr.select_outliers
+
     # add to anomaly hash dates
     anomaly_hash= Hash.new
     anomaly_values.each do |an|

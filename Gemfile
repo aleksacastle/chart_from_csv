@@ -22,6 +22,7 @@ gem 'will_paginate', '~> 3.1', '>= 3.1.6'
 gem 'bootstrap', '~> 4.0.0.beta2.1'
 gem 'jquery-rails'
 gem 'chartkick'
+gem 'highcharts-rails'
 gem 'groupdate'
 gem 'basic-stats', '~> 0.0.2'
 

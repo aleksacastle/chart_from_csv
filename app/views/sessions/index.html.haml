@@ -3,7 +3,31 @@
   = form_tag import_sessions_path, multipart: true do
     = file_field_tag :file
     = submit_tag "Import"
-= column_chart charts_pass_fail_path, stacked: true, height: "400px", ytitle: "Number of builds"
+= column_chart Session.group(:summary_status).group_by_day(:created_at).count, height: "400px", ytitle: "Number of builds",
+title: "Pass vs Fail",                                                       |
+stacked: true,                                                               |
+library: {                                                                   |
+  xAxis: {                                                                   |
+    plotLines: [{                                                            |
+          value: Session.anomaly[0],                                         |
+          color: 'red',                                                      |
+          dashStyle: 'shortdash',                                            |
+          width: 2,                                                          |
+          label: {                                                           |
+              text: 'anomaly'                                                |
+          }                                                                  |
+      }, {                                                                   |
+          value: Session.anomaly[1],                                         |
+          color: 'red',                                                      |
+          dashStyle: 'shortdash',                                            |
+          width: 2,                                                          |
+          label: {                                                           |
+              text: 'anomaly'                                                |
+          }                                                                  |
+      }]                                                                     |
+}                                                                            |
+}                                                                            |
+
 %h3 Pass vs Fail
 = area_chart charts_duration_time_path, legend: false, discrete: true, ytitle: "Duration of builds", max: 7000
 %h3 Duration per day
