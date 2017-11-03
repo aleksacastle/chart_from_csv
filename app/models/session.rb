@@ -41,7 +41,7 @@ class Session < ApplicationRecord
     dates_array = total_hash_dates.keys
 
     # percent of failed builds per day with date
-    percent_hash = Hash[dates_array.zip(percent)]
+    @percent_hash = Hash[dates_array.zip(percent)]
   end
 
   def self.anomaly
@@ -50,5 +50,19 @@ class Session < ApplicationRecord
     arr = Session.failed_percent.values
     arr.extend Basic::Stats
     arr.select_outliers
+    
+    # add to anomaly hash dates
+    anomaly_hash= Hash.new
+    anomaly_values.each do |an|
+      anomaly_hash = @percent_hash.select{|key, value| value == an}
+    end
+
+    # calculate index for annotation
+    dates_array = Session.failed_percent.keys
+    anomaly_index=[]
+    anomaly_hash.keys.each do |date|
+      anomaly_index << dates_array.find_index{ |d| d == date}
+    end
+    anomaly_index
   end
 end
